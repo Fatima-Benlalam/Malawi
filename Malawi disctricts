@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Chichewa Quiz</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    #quiz-container {
+      margin: 20px auto;
+      width: 500px;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Chichewa Quiz</h1>
+
+  <div id="quiz-container">
+    <p>Try to translate these English phrases into Chichewa:</p>
+
+    <label for="phrase1">Good Morning</label>
+    <input type="text" id="phrase1" placeholder="Enter your translation">
+
+    <label for="phrase2">How are you?</label>
+    <input type="text" id="phrase2" placeholder="Enter your translation">
+
+    <label for="phrase3">What is the time?</label>
+    <input type="text" id="phrase3" placeholder="Enter your translation">
+
+    <label for="phrase4">Goodbye</label>
+    <input type="text" id="phrase4" placeholder="Enter your translation">
+
+    <button onclick="checkAnswers()">Check Answers</button>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      let correctAnswers = [
+        "MWADZUKA BWANJI",
+        "MULIBWANJI",
+        "KODI NTHAWI NDI CHANI",
+        "NDAPITA"
+      ];
+
+      let userAnswers = [
+        document.getElementById("phrase1").value.toUpperCase(),
+        document.getElementById("phrase2").value.toUpperCase(),
+        document.getElementById("phrase3").value.toUpperCase(),
+        document.getElementById("phrase4").value.toUpperCase()
+      ];
+
+      let results = document.getElementById("results");
+      results.innerHTML = ""; // Clear previous results
+
+      for (let i = 0; i < correctAnswers.length; i++) {
+        if (userAnswers[i] === correctAnswers[i]) {
+          results.innerHTML += `<p style="color:green;">Phrase ${i + 1}: Correct!</p>`;
+        } else {
+          results.innerHTML += `<p style="color:red;">Phrase ${i + 1}: Incorrect. The correct answer is ${correctAnswers[i]}</p>`;
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>
